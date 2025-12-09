@@ -1,0 +1,28 @@
+name: Generate timelapse
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  timelapse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Generate timelapse video
+        run: |
+          chmod +x scripts/generate_timelapse.sh
+          ./scripts/generate_timelapse.sh
+
+      - name: Upload timelapse artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: timelapse-video
+          path: timelapses/*.mp4

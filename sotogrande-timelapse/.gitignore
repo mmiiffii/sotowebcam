@@ -1,0 +1,14 @@
+# Ignore typical OS/editor cruft
+.DS_Store
+*.swp
+*.swo
+
+# Node / Python / misc
+node_modules/
+__pycache__/
+
+# Timelapse artifacts can be big; you may want them gitignored
+timelapses/*.mp4
+
+# Uncomment this if you want to keep frames out of git and use LFS or external storage instead
+# frames/*.jpg
